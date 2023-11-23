@@ -1,0 +1,168 @@
+﻿<Page x:Class="HydrodynamicsCalculations.Views.LiquidPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:ScottPlot="clr-namespace:ScottPlot;assembly=ScottPlot.WPF"
+      xmlns:local="clr-namespace:HydrodynamicsCalculations.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="1200"
+      Title="LiquidPage">
+
+    <Grid>
+        <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Disabled">
+        <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition MinWidth="200" Width="*"/>
+                    <ColumnDefinition MinWidth="800"/>
+                    <ColumnDefinition Width="4*" />
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Column="0" Grid.Row="0" Content="Ввод данных" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="24" HorizontalAlignment="Stretch" BorderBrush="Black" BorderThickness="1" Background="{StaticResource ColorPrimary}" Foreground="White" Margin="0"/>
+                <Label Grid.Column="1" Grid.Row="0" Content="Графические данные" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="24" HorizontalAlignment="Stretch" BorderBrush="Black" BorderThickness="1" Background="{StaticResource ColorPrimary}" Foreground="White" Margin="0"/>
+                <Label Grid.Column="2" Grid.Row="0" Content="Результаты расчетов" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="24" HorizontalAlignment="Stretch" BorderBrush="Black" BorderThickness="1" Background="{StaticResource ColorPrimary}" Foreground="White" Margin="0"/>
+
+
+                <StackPanel Grid.Column="0" Grid.Row="1">
+                <Label Content="Плотность жидкости" FontSize="18" Width="185" HorizontalAlignment="Left" BorderBrush="{StaticResource ColorPrimary}" BorderThickness="2" Background="{StaticResource ColorPrimary}" Foreground="White" Margin="0 15 0 0"/>
+                <TextBox Name="LiquidNumberText" Width="185" HorizontalAlignment="Left" FontSize="18" DataObject.Pasting="TextBoxNumsPasting"  PreviewTextInput="CheckCorrectTextInput" TextChanged="TextBoxData_TextChanged" PreviewKeyDown="BlockSpaceForTextBox"/>
+
+                <Button Content="Выполнить расчеты" Name="SillyBtn" HorizontalAlignment="Left" IsEnabled="False"  Width="175" Height="40" Margin="10 10" Click="SillyBtn_Click">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="15"></Setter>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button Content="Получить отчет в PDF" Name="PdfBtn" HorizontalAlignment="Left" IsEnabled="False"  Width="175" Height="40" Margin="10 10" Click="GetPDFFileBtn_Click">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="15"></Setter>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
+
+                <Border Grid.Column="1" Grid.Row="1" BorderBrush="Black" BorderThickness="1">
+                <ScrollViewer Name="scrollViewer" PreviewMouseWheel="scrollViewer_MouseWheel">
+
+                    <StackPanel HorizontalAlignment="Center">
+
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                                <Label Content="Давление p " Width="750" FontSize="20" Height="50" HorizontalAlignment="Left" BorderBrush="{StaticResource ColorPrimary}" BorderThickness="2" Background="{StaticResource ColorPrimary}" Foreground="White" Margin="0 5 0 0"/>
+                                <ScottPlot:WpfPlot x:Name="WpfPlot1" Width="750" Height="500" />
+                                <Button Content="Получить файл с графиком" Name="GetFileBtn" Width="250" Height="30" Click="GetFileBtn_Click">
+                                    <Button.Resources>
+                                        <Style TargetType="Border">
+                                            <Setter Property="CornerRadius" Value="15"></Setter>
+                                        </Style>
+                                    </Button.Resources>
+                                </Button>
+                        </StackPanel>
+
+                            <StackPanel Orientation="Vertical">
+                                <Label Content="Скорость x=H"  Width="750" FontSize="20" Height="50" HorizontalAlignment="Left" BorderBrush="{StaticResource ColorPrimary}" BorderThickness="2" Background="{StaticResource ColorPrimary}" Foreground="White" Margin="0 5 0 0"/>
+                                <ScottPlot:WpfPlot x:Name="WpfPlot2" Width="750" Height="500" />
+                                <Button Content="Получить файл с графиком" Name="GetSecondFileBtn" Width="250" Height="30" Click="GetSecondFileBtn_Click">
+                                    <Button.Resources>
+                                        <Style TargetType="Border">
+                                            <Setter Property="CornerRadius" Value="15"></Setter>
+                                        </Style>
+                                    </Button.Resources>
+                                </Button>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Vertical">
+                                <Label Content="Скорость x=19H"  Width="750" FontSize="20" Height="50" HorizontalAlignment="Left" BorderBrush="{StaticResource ColorPrimary}" BorderThickness="2" Background="{StaticResource ColorPrimary}" Foreground="White" Margin="0 5 0 0"/>
+                                <ScottPlot:WpfPlot x:Name="WpfPlot3" Width="750" Height="500" />
+                                <Button Content="Получить файл с графиком" Name="GetThirdFileBtn" Width="250" Height="30" Click="GetThirdFileBtn_Click">
+                                    <Button.Resources>
+                                        <Style TargetType="Border">
+                                            <Setter Property="CornerRadius" Value="15"></Setter>
+                                        </Style>
+                                    </Button.Resources>
+                                </Button>
+                        </StackPanel>
+                    </StackPanel>
+                </ScrollViewer>
+            </Border>
+
+                <Border Grid.Column="2" Grid.Row="1" BorderBrush="Black" BorderThickness="1">
+                    <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Disabled">
+                        <StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Vср в сечении x=H: " FontSize="20" />
+                        <TextBlock Text="" Name="AverageHSpeedTextBox" FontSize="20"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Vср в сечении x=19H: " FontSize="20" />
+                        <TextBlock Text="" Name="Average19HSpeedTextBox" FontSize="20"/>
+                    </StackPanel>
+
+                    <DataGrid AutoGenerateColumns="False"  Height="215" HorizontalAlignment="Left" Name="dataGrid1" VerticalAlignment="Top"
+                          Width="560" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled" 
+                          CanUserAddRows="False" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserSortColumns="False">
+                        <DataGrid.CellStyle>
+                            <Style TargetType="DataGridCell">
+                                <Setter Property="Width" Value="120"/>
+                                <Setter Property="Height" Value="50"/>
+                                <Setter Property="IsTabStop" Value="False"></Setter>
+                                <Setter Property="Focusable" Value="False"></Setter>
+                            </Style>
+                        </DataGrid.CellStyle>
+                        <DataGrid.Columns >
+                            <DataGridTextColumn Binding="{Binding Path=A}" MinWidth="120" >
+                                <DataGridTextColumn.CellStyle>
+                                    <Style TargetType="DataGridCell">
+                                        <Setter Property="Background" Value="AliceBlue"></Setter>
+                                    </Style>
+                                </DataGridTextColumn.CellStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Binding="{Binding Path=B}" MinWidth="80" />
+                            <DataGridTextColumn Binding="{Binding Path=C}" MinWidth="120" />
+                            <DataGridTextColumn Binding="{Binding Path=D}" MinWidth="120" />
+                            <DataGridTextColumn Binding="{Binding Path=E}" MinWidth="120" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Угол наклона для участка развитого течения: " FontSize="20" />
+                        <TextBlock Text="" Name="AngleDevTextBox" FontSize="20"/>
+                    </StackPanel>
+
+                    <DataGrid AutoGenerateColumns="False"  Height="215" HorizontalAlignment="Left" Name="dataGrid2" VerticalAlignment="Top"
+                          Width="560" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled" 
+                          CanUserAddRows="False" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserSortColumns="False">
+                        <DataGrid.CellStyle>
+                            <Style TargetType="DataGridCell">
+                                <Setter Property="Width" Value="120"/>
+                                <Setter Property="Height" Value="50"/>
+                                <Setter Property="IsTabStop" Value="False"></Setter>
+                                <Setter Property="Focusable" Value="False"></Setter>
+                            </Style>
+                        </DataGrid.CellStyle>
+                        <DataGrid.Columns >
+                            <DataGridTextColumn Binding="{Binding Path=A}" MinWidth="120" >
+                                <DataGridTextColumn.CellStyle>
+                                    <Style TargetType="DataGridCell">
+                                        <Setter Property="Background" Value="AliceBlue"></Setter>
+                                    </Style>
+                                </DataGridTextColumn.CellStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Binding="{Binding Path=B}" MinWidth="80" />
+                            <DataGridTextColumn Binding="{Binding Path=C}" MinWidth="120" />
+                            <DataGridTextColumn Binding="{Binding Path=D}" MinWidth="120" />
+                            <DataGridTextColumn Binding="{Binding Path=E}" MinWidth="120" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+                    </ScrollViewer>
+                </Border>
+        </Grid>
+        </ScrollViewer>
+    </Grid>
+</Page>

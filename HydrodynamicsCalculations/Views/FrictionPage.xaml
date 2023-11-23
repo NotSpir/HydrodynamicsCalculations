@@ -1,0 +1,69 @@
+﻿<Page x:Class="HydrodynamicsCalculations.Views.FrictionPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:ScottPlot="clr-namespace:ScottPlot;assembly=ScottPlot.WPF"
+      xmlns:local="clr-namespace:HydrodynamicsCalculations.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="1200"
+      Title="FrictionPage">
+
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition MinWidth="200" Width="*"/>
+                <ColumnDefinition MinWidth="800"/>
+                <ColumnDefinition Width="4*" />
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Grid.Row="0" Content="Кнопки" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="24" HorizontalAlignment="Stretch" BorderBrush="{StaticResource ColorAccent}" BorderThickness="2" Background="{StaticResource ColorPrimary}" Foreground="White" Margin="0"/>
+            <Label Grid.Column="1" Grid.Row="0" Content="Графические данные" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="24" HorizontalAlignment="Stretch" BorderBrush="{StaticResource ColorAccent}" BorderThickness="2" Background="{StaticResource ColorPrimary}" Foreground="White" Margin="0"/>
+            <Label Grid.Column="2" Grid.Row="0" Content="Результаты расчетов" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="24" HorizontalAlignment="Stretch" BorderBrush="{StaticResource ColorAccent}" BorderThickness="2" Background="{StaticResource ColorPrimary}" Foreground="White" Margin="0"/>
+
+            <StackPanel  Grid.Row="1">
+                <Button IsEnabled="False" Content="Выполнить расчеты" Name="SillyBtn" Width="200" Height="40" Click="SillyBtn_Click">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="15"></Setter>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button IsEnabled="False" Content="Получить отчет в PDF" Name="PdfBtn" Width="200" Height="40" Click="GetPDFFileBtn_Click">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="15"></Setter>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
+            <Border Grid.Column="1"  Grid.Row="1" BorderBrush="Black" BorderThickness="1">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top">
+                        <Button Content="Получить файл с графиком" Name="GetFileBtn" Width="250" Height="30" Margin="0 15 0 0" Click="GetFileBtn_Click">
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="15"></Setter>
+                                </Style>
+                            </Button.Resources>
+                        </Button>
+                    </StackPanel>
+
+                    <Label Content="Зависимость коэффициента трения на стенке канала, Cf, от координаты " Width="750" FontSize="20" Height="50" HorizontalAlignment="Left" BorderBrush="{StaticResource ColorPrimary}" BorderThickness="2" Background="{StaticResource ColorPrimary}" Foreground="White" Margin="0 5 0 0"/>
+                    <ScottPlot:WpfPlot x:Name="WpfPlot1" Width="750" Height="500" />
+
+                </StackPanel>
+            </Border>
+
+            <Border Grid.Column="2"  Grid.Row="2" BorderBrush="Black" BorderThickness="1">
+                <StackPanel>
+                    <Label Content="Cf для участка развитого течения:  " FontSize="20" />
+                    <TextBlock Text="" Name="CfValueTextBox" FontSize="20"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Grid>
+</Page>
