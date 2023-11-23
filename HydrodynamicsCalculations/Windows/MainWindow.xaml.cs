@@ -36,10 +36,6 @@ namespace HydrodynamicsCalculations
             FirstTaskFrame.Navigate(new SpeedPage());
             SecondTaskFrame.Navigate(new LiquidPage());
             ThirdTaskFrame.Navigate(new FrictionPage());
-
-            string fileName = directory + "PDFStructuralFile.html";
-
-            previewPDF.Navigate(fileName);
         }
         Regex regex = new Regex(@"^[0-9]");
 
