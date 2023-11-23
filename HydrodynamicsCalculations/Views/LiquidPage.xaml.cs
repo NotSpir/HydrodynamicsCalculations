@@ -191,7 +191,7 @@ namespace HydrodynamicsCalculations.Views
             listFirstTable[2].C = DeltaPWhole.ToString();
             listFirstTable[2].D = DeltaPDeveloped.ToString();
             listFirstTable[2].E = (24.0 / AppManager.ReNum2).ToString();
-                //Заполнение строки Lambda ???
+                //Заполнение строки Lambda
                 double lambdaStart = (DeltaPZero * H * 2) / (Lstart * durability * avgSpeedH);
                 double lambdaFull = (DeltaPWhole * H * 2) / (L * durability * ((avgSpeed19H + avgSpeedH)/2));
                 double lambdaDeveloped = (DeltaPDeveloped * H * 2) / (DevelopedL * durability * avgSpeedH);
@@ -202,18 +202,18 @@ namespace HydrodynamicsCalculations.Views
                 //asd
                 AppManager.secondTaskDataStrings.Add(listFirstTable[1].A);
             AppManager.secondTaskDataStrings.Add(listFirstTable[1].B);
-            AppManager.secondTaskDataStrings.Add(listFirstTable[1].C);
             AppManager.secondTaskDataStrings.Add(listFirstTable[1].D);
+            AppManager.secondTaskDataStrings.Add(listFirstTable[1].C);
             AppManager.secondTaskDataStrings.Add(listFirstTable[1].E);
             AppManager.secondTaskDataStrings.Add(listFirstTable[2].A);
             AppManager.secondTaskDataStrings.Add(listFirstTable[2].B);
-            AppManager.secondTaskDataStrings.Add(listFirstTable[2].C);
             AppManager.secondTaskDataStrings.Add(listFirstTable[2].D);
+            AppManager.secondTaskDataStrings.Add(listFirstTable[2].C);
             AppManager.secondTaskDataStrings.Add(listFirstTable[2].E);
             AppManager.secondTaskDataStrings.Add(listFirstTable[3].A);
             AppManager.secondTaskDataStrings.Add(listFirstTable[3].B);
-            AppManager.secondTaskDataStrings.Add(listFirstTable[3].C);
             AppManager.secondTaskDataStrings.Add(listFirstTable[3].D);
+            AppManager.secondTaskDataStrings.Add(listFirstTable[3].C);
             AppManager.secondTaskDataStrings.Add(listFirstTable[3].E);
 
             dataGrid1.Items.Refresh();
@@ -225,7 +225,6 @@ namespace HydrodynamicsCalculations.Views
                 AngleDevTextBox.Text = angleDeveloped.ToString();
                 //Найди формулу для лямбды и задание сделано
                 double lambdaFromAngle = angleDeveloped;
-                dataStrings.Add(lambdaFromAngle.ToString());
                 AppManager.secondTaskDataStrings.Add(lambdaFromAngle.ToString());
                 //Пункт 4 | Провести сопоставление с теоретической оценкой для развитого участка (Лямбда) = 24/Re; представить результаты в виде таблицы и графически.
                 listSecondTable[1].A = AppManager.ReNum1.ToString();
