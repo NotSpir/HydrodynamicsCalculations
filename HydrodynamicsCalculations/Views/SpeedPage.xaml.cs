@@ -28,6 +28,7 @@ using MessageBox = System.Windows.MessageBox;
 using iText.Html2pdf.Resolver.Font;
 using TextBox = System.Windows.Controls.TextBox;
 using KeyEventArgs = System.Windows.Input.KeyEventArgs;
+using HydrodynamicsCalculations.Windows;
 
 namespace HydrodynamicsCalculations.Views
 {
@@ -470,6 +471,14 @@ namespace HydrodynamicsCalculations.Views
         private void BlockSpaceForTextBox(object sender, KeyEventArgs e)
         {
             e.Handled = e.Key == Key.Space;
+        }
+
+        private void TaskViewBtn_Click(object sender, RoutedEventArgs e)
+        {
+            TaskViewWindow taskViewWindow = new TaskViewWindow();
+            taskViewWindow.TaskConditionsTextBox.Text = "Для каждого из трех чисел Re:\r\nОценить длину начального участка канала (в качестве границы начального участка следует выбрать сечение, в котором значение максимальной скорости составляет 95% и 98% от максимальной скорости развитого течения Vmax = 1.5Vвх); провести сопоставление полученных результатов по длине начального участка с аналитическим решением Lнач/H = 0.04*Re; представить результаты в виде таблицы и графически.\r\n";
+            taskViewWindow.TaskResultsTextBox.Text = "1. Определить максимальное значение скорости Vmax и вывести на экран.\r\n2. Сравнить со значением 1.5Vвх, если меньше, то проинформировать пользователя\r\n3. Найти координаты, которым соответствует 95% и 98% Vmax. Определить ближайшую по модулю координату.\r\n4. Представить результаты в виде таблицы:\r\n5. На графиках скорости в центральном сечении трубы указать 95% и 98% Vmax и теоретическое значение.\r\n6. Выбрать значения ближе к теоретическим – это будет длина начального участка Lнач для каждого рассмотренного числа Re.\r\n";
+            taskViewWindow.Show();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using iText.Html2pdf;
+﻿using HydrodynamicsCalculations.Windows;
+using iText.Html2pdf;
 using ScottPlot;
 using System;
 using System.Collections.Generic;
@@ -141,6 +142,14 @@ namespace HydrodynamicsCalculations.Views
                 }
                 else MessageBox.Show("Что-то пошло не так!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private void TaskViewBtn_Click(object sender, RoutedEventArgs e)
+        {
+            TaskViewWindow taskViewWindow = new TaskViewWindow();
+            taskViewWindow.TaskConditionsTextBox.Text = "Построить график зависимости коэффициента трения на стенке канала, Cf, от координаты x. Проанализировать распределение коэффициента трения и убедиться в том, что для участка развитого течения выполняется соотношение  = 2 Cf.";
+            taskViewWindow.TaskResultsTextBox.Text = "Определить  Cf для участка развитого течения";
+            taskViewWindow.Show();
         }
     }
 }

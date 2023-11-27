@@ -1,4 +1,5 @@
-﻿using iText.Html2pdf;
+﻿using HydrodynamicsCalculations.Windows;
+using iText.Html2pdf;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -362,7 +363,7 @@ namespace HydrodynamicsCalculations.Views
         <tr>
             <td>Re</td>
             <td>Участок</td>
-            <td>λ = (Δp * H * 2) / (ΔL * p * Vср)</td>
+            <td></td>
             <td>λ по углу наклона</td>
             <td>λ = 24/Re </td>
         </tr>
@@ -454,6 +455,14 @@ namespace HydrodynamicsCalculations.Views
         private void BlockSpaceForTextBox(object sender, KeyEventArgs e)
         {
             e.Handled = e.Key == Key.Space;
+        }
+
+        private void TaskViewBtn_Click(object sender, RoutedEventArgs e)
+        {
+            TaskViewWindow taskViewWindow = new TaskViewWindow();
+            taskViewWindow.TaskConditionsTextBox.Text = "Для каждого из трех чисел Re:\r\nПроанализировать поле давления; найти коэффициент сопротивления  для начального участка, участка с установившимся параболическим профилем скорости и канала в целом при помощи формулы:\r\nΔp = λ * (ΔL/H)*((p*Vср)/2),\r\nгде Δp – перепад давления на участке канала длиной ΔL, p – плотность жидкости, Vср – средняя по сечению скорость. Определить значение λ для участка развитого течения из угла наклона линейного участка зависимости. Провести сопоставление с теоретической оценкой для развитого участка λ = 24/Re; представить результаты в виде таблицы и графически.\r\n";
+            taskViewWindow.TaskResultsTextBox.Text = "1. определить среднее значение скорости в сечениях х =Н (использовать для начального участка) и х = 19Н (использовать для развитого течения и канала в целом L = 20*H)\r\n2. Последовательно заполнить таблицу для каждого из трех чисел Re:\r\n3. Определить значение λ для участка развитого течения из угла наклона линейного участка зависимости.\r\n4. Провести сопоставление с теоретической оценкой для развитого участка λ = 24/Re; представить результаты в виде таблицы и графически.\r\n";
+            taskViewWindow.Show();
         }
     }
 }

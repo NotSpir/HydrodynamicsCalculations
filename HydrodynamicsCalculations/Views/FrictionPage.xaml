@@ -39,6 +39,13 @@
                         </Style>
                     </Button.Resources>
                 </Button>
+                <Button Content="Просмотреть условие" Name="TaskViewBtn" HorizontalAlignment="Left" Width="200" Height="40" Click="TaskViewBtn_Click">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="15"></Setter>
+                        </Style>
+                    </Button.Resources>
+                </Button>
             </StackPanel>
             <Border Grid.Column="1"  Grid.Row="1" BorderBrush="Black" BorderThickness="1">
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
